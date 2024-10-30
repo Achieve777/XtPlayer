@@ -1,102 +1,112 @@
 # XtPlayer
-支持弹幕、字幕的HTML5 播放器(dev)
-## Demo地址
-https://xtplayer.acgxt.com
-## 详细文档地址
-https://api.acgxt.com/#/document/xtplayer
+An HTML5 player supporting Danmaku (bullet comments) and subtitles (dev)
 
-## 使用方法
+## Demo
+![微信 2024-10-30 12 04 54](https://github.com/user-attachments/assets/0d7dbe16-13bb-4759-bf6d-7dd7a818477d)
+
+
+## Documentation
+[https://api.acgxt.com/#/document/xtplayer](https://api.acgxt.com/#/document/xtplayer)
+
+## Usage
 
 ```javascript
-    //开启Debug调试
-    window.XtPlayerDebug = true;
-    
-    var xtPlayer = new XtPlayer("#app", {
-        //当前播放的视频资源地址
-        src: "8.mp4",
-        //使用加载器加载视频[hls,flv]需载入前置js(hls.js,flv.js)
-        loader: "mp4",
-        quality:[//视频品质 v1.2.0以后版本支持
-            {
-                name:"高清",
-                src:"8.mp4",
-                loader:"mp4"
-            },
-            {
-                name:"清晰",
-                src:"8.mp4",
-                loader:"mp4"
-            },
-            {
-                name:"流畅",
-                src:"8.mp4",
-                loader:"mp4"
-            }
-        ],
-        width: 800,//宽度
-        height: 'auto',//auto为自动高度
-        //初始化时的预览图
-        poster: "https://static.acgxt.com/logo6.png",
-        //是否自动播放[用户记忆储存]
-        autoplay: false,
-        //是否预先加载[用户记忆储存]
-        preload: true,
-        //是否洗脑循环[用户记忆储存]
-        loop: false,
-        //默认音量0-1
-        volume: 1,
-        //弹幕配置
-        danmaku: {
-           //是否默认显示弹幕[用户记忆储存]
-            enable: true,
-            //弹幕获取接口 格式[{text:'xxx',color:'xxxx',time:1}]
-            api: "https://xtplayer.acgxt.com/getDanmu.php",
-             //弹幕接收接口
-            send: "https://xtplayer.acgxt.com/sendDanmu.php",
-           //单行弹幕密集间距(默认5)
-            dense: 5,
-            //同屏弹幕最大数量(默认500)
-            screenMax: 500,
-            //弹幕透明度(默认1)
-            opacity: 1,
-            //弹幕文字大小(默认18)[不建议修改]
-            fontSize: 18,
-            //弹幕移动速度(默认1)
-            move: 1 
+// Enable debug mode
+window.XtPlayerDebug = true;
+
+var xtPlayer = new XtPlayer("#app", {
+    // Video source URL
+    src: "8.mp4",
+    // Loader type for video (hls, flv) requires preloaded scripts (hls.js, flv.js)
+    loader: "mp4",
+    quality: [ // Video quality options supported from v1.2.0
+        {
+            name: "High Definition",
+            src: "8.mp4",
+            loader: "mp4"
         },
-        subtitle: {
-            //是否默认显示字幕[用户记忆储存]
-            enable: true,
-             //字幕接口 格式[{text: "字幕内容",start:"开始秒数",end:"结束秒数"}]
-            api: "https://xtplayer.acgxt.com/subtitle.php"
+        {
+            name: "Clear",
+            src: "8.mp4",
+            loader: "mp4"
         },
-        button:{//是否显示底部控件按钮 v1.2.1
-			volume:false,//音量
-			setting:false,//设置
-			windowFullScreen:false,//窗口全屏
-			fullScreen:false//全屏
-		}
-    });
+        {
+            name: "Smooth",
+            src: "8.mp4",
+            loader: "mp4"
+        }
+    ],
+    width: 800, // Player width
+    height: 'auto', // Auto height
+    // Preview image for initialization
+    poster: "https://static.acgxt.com/logo6.png",
+    // Auto-play setting [user memory storage]
+    autoplay: false,
+    // Preload setting [user memory storage]
+    preload: true,
+    // Loop playback setting [user memory storage]
+    loop: false,
+    // Default volume level (0-1)
+    volume: 1,
+    // Danmaku (bullet comments) configuration
+    danmaku: {
+        // Default display setting for Danmaku [user memory storage]
+        enable: true,
+        // Danmaku retrieval API format: [{text:'xxx',color:'xxxx',time:1}]
+        api: "https://xtplayer.acgxt.com/getDanmu.php",
+        // Danmaku sending API
+        send: "https://xtplayer.acgxt.com/sendDanmu.php",
+        // Single line Danmaku density spacing (default 5)
+        dense: 5,
+        // Maximum number of Danmaku on screen (default 500)
+        screenMax: 500,
+        // Danmaku opacity (default 1)
+        opacity: 1,
+        // Danmaku font size (default 18) [not recommended to modify]
+        fontSize: 18,
+        // Danmaku movement speed (default 1)
+        move: 1 
+    },
+    // Subtitle configuration
+    subtitle: {
+        // Default display setting for subtitles [user memory storage]
+        enable: true,
+        // Subtitle API format: [{text: "Subtitle content", start:"start seconds", end:"end seconds"}]
+        api: "https://xtplayer.acgxt.com/subtitle.php"
+    },
+    button: { // Bottom control button display settings v1.2.1
+        volume: false, // Volume control
+        setting: false, // Settings
+        windowFullScreen: false, // Windowed full screen
+        fullScreen: false // Full screen
+    }
+});
 ```
-## XtPlayer更新日志
+
+## XtPlayer Changelog
 ### v1.3.0
-* [x] 支持回溯弹幕时间
-* [x] 增加彩色弹幕
-* [ ] 使用 rust 重写
+* [x] Added rewind feature for Danmaku timing
+* [x] Introduced colored Danmaku
+* [ ] Rewritten in Rust
+
 ### v1.2.1
-* 1.修复弹幕在窗口全屏下无法自动变动大小问题
-* 2.增加右键画中画模式
-* 3.增加手动设置时间跳转
-* 4.增加设置中按钮开关显示
+* Fixed the issue with Danmaku resizing in full-screen mode
+* Added picture-in-picture mode via right-click
+* Added manual time jump setting
+* Added toggle display for settings button
+
 ### v1.2.0
-* 1.增加网页全屏
-* 2.增加右键倍速
-* 3.增加视频品质选择
-* 4.修复已知显示bug
+* Introduced full-screen capability for web pages
+* Added speed adjustment via right-click
+* Added video quality selection
+* Fixed known display bugs
+
 ### v1.1.1
-* 1.修复进度条滑块显示差距问题
+* Fixed the discrepancy issue with the progress bar slider display
+
 ### v1.1.0
-* 1.修复部分已知Bug
-* 2.增加flv.js加载视频
-## v1.0.0
-* 基础XtPlayer创建,支持字幕,弹幕
+* Fixed various known bugs
+* Added support for loading videos with flv.js
+
+### v1.0.0
+* Initial release of XtPlayer, supporting subtitles and Danmaku.
