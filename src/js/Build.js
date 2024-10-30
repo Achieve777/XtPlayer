@@ -5,6 +5,12 @@ class Build{
         this._createPlayer();
     }
 
+    /**
+     * 创建一个新的玩家对象
+     * @param {string} name - 玩家的名称
+     * @param {string} role - 玩家的角色
+     * @returns {Object} - 包含玩家信息的对象
+     */
     _createPlayer(){
         let playerCode = `<div class="xt-player-loading">
         <svg x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve">
