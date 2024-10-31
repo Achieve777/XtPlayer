@@ -10,6 +10,9 @@ class Logger{
             }
         }
     }
+    static warn(msg){
+        console.warn(`[XtPlayer]`,msg);
+    }
     static error(msg){
         console.error(`[XtPlayer]`,msg);
     }
