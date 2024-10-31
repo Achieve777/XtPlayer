@@ -17,5 +17,9 @@ class Logger{
         console.error(`[XtPlayer]`,msg);
     }
 
+    static warning(msg){
+        console.warn(`[XtPlayer]`,msg)
+    }
+
 }
 module.exports = Logger;
