@@ -6,6 +6,27 @@ class Build{
     }
 
     /**
+     * 初始化播放器
+     * @param {Object} options - 播放器配置选项
+     * @param {string} options.url - 视频源地址
+     * @param {string} options.type - 视频类型
+     * @param {string} options.quality - 视频质量
+     * @param {boolean} options.loop - 是否循环播放
+     * @param {boolean} options.autoplay - 是否自动播放
+     * @param {boolean} options.preload - 是否预先加载
+     * /
+    init(options){
+        this._createPlayer();
+    }
+
+    /**
+     * 播放视频
+     */
+    play(){
+        this._video.play();
+    }
+
+    /**
      * 创建一个新的玩家对象
      * @param {string} name - 玩家的名称
      * @param {string} role - 玩家的角色

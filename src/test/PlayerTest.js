@@ -37,4 +37,13 @@ describe('XtPlayer 构造函数测试', () => {
     expect(player._initEvent).toHaveBeenCalledTimes(1);
     expect(player._initKey).toHaveBeenCalledTimes(1);
   });
+
+  test('初始化完成后设置加载状态', () => {
+    expect(player.setLoading).toHaveBeenCalledTimes(2);
+    expect(player.setLoading).toHaveBeenCalledWith(false);
+  });
+
+  test('初始化完成后设置初始化状态', () => {
+    expect(player._isInit).toEqual(true);
+  });
 });
