@@ -67,3 +67,33 @@ exports.parseToS = function(time){
     }
     return (m*60)+s;
 }
+exports.calcTime = (s) => {
+    if (!s) {
+        return '-'
+    }
+    const dateTime = 24 * 60 * 60
+    const hourTime = 60 * 60
+    const minuteTime = 60
+    const d = Number(parseInt(s / 60 / 60 / 24 + '')) || 0 // 天
+    if (d > 0) {
+        s = s - d * dateTime
+    }
+    const h = Number(parseInt(s / 60 / 60 + '')) || 0 // 时
+    if (h > 0) {
+        s = s - h * hourTime
+    }
+    const m = Number(parseInt(s / 60 + '')) || 0 // 分
+    if (m > 0) {
+        s = s - m * minuteTime // 秒
+    }
+    let str = [
+        { k: d, v: d ? `${d}天` : '' },
+        { k: h, v: h ? `${h}时` : '' },
+        { k: m, v: m ? `${m}分` : '' },
+        { k: s, v: s ? `${s}秒` : '' },
+    ].filter(item => item.v)
+
+    str = str.map(item => item.v)
+    
+    return str.join('')
+}
