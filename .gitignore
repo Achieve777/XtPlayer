@@ -1,6 +1,5 @@
 .idea
 node_modules
 npm-debug.log
-.vscode
 package-lock.json
 build
