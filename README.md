@@ -2,11 +2,8 @@
 An HTML5 player supporting Danmaku (bullet comments) and subtitles (dev)
 
 ## Demo
-![微信 2024-10-30 12 04 54](https://github.com/user-attachments/assets/0d7dbe16-13bb-4759-bf6d-7dd7a818477d)
+![](https://github.com/user-attachments/assets/0d7dbe16-13bb-4759-bf6d-7dd7a818477d)
 
-
-## Documentation
-[https://api.acgxt.com/#/document/xtplayer](https://api.acgxt.com/#/document/xtplayer)
 
 ## Usage
 
