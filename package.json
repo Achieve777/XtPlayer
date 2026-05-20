@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --inline --content-base ./build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node src/test/Util.test.js"
   },
   "author": "幻音い",
   "license": "ISC",
